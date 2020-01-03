@@ -22,19 +22,7 @@ public class UserController {
     }
 
     @PostMapping("/user")
-    public void addUser(@RequestParam(value = "name") String name,
-                        @RequestParam(value = "email") String email,
-                        @RequestParam(value = "status") Integer status
-    ){
-        if (name.isEmpty() || email.isEmpty()){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "name and email required");
-        }
-
-        User user = new User();
-        user.setName(name);
-        user.setEmail(email);
-        user.setStatus(status);
-
+    public void addUser(@RequestBody User user){
         userRepository.save(user);
     }
 
@@ -52,7 +40,7 @@ public class UserController {
     }
 
     @PatchMapping("/user/{id}")
-    public ResponseEntity<?> updateUserName(@PathVariable("id") int id, @RequestBody User user){
+    public ResponseEntity<?> updateUser(@PathVariable("id") int id, @RequestBody User user){
         boolean existUser = userRepository.existsById(id);
         if (existUser){
             Optional<User> findUser = userRepository.findById(id);
