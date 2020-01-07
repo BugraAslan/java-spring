@@ -53,6 +53,6 @@ public class UserController {
             }
         }
 
-        return new ResponseEntity<>("Not Found abi!", HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>("User Not Found!", HttpStatus.NOT_FOUND);
     }
 }
