@@ -5,6 +5,7 @@ import com.example.Mysql.Repository.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Optional;
 
@@ -20,6 +21,13 @@ public class UserController {
     @GetMapping("/users")
     public Iterable<User> allUsers() {
         return userRepository.findAll();
+    }
+
+    @GetMapping("/user-list")
+    public ModelAndView userList(ModelAndView modelAndView) {
+        modelAndView.addObject("users", userRepository.findAll());
+        modelAndView.setViewName("users");
+        return modelAndView;
     }
 
     @PostMapping("/user")
