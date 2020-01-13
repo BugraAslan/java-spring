@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>User List</title>
+    <link rel="stylesheet" type="text/css" href="css/users.css">
+    <script type="application/javascript" src="js/users.js"></script>
 </head>
 <body>
-<div style="text-align: center;">
-    <h2>User List</h2>
-    <table>
-        <thead>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Status</th>
-        </thead>
-        <tbody>
-        <tr th:each="user : ${users}">
-            <td th:text="${user.name}"></td>
-            <td th:text="${user.email}"></td>
-            <td th:text="${user.status}"></td>
-        </tr>
-        </tbody>
-    </table>
-</div>
+<h2>User List</h2>
+<table class="user-table">
+    <thead>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Status</th>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.status}"></td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
